@@ -1,4 +1,6 @@
 import React from 'react';
+import {HomeDefault} from './pages/home-default'
+
 import {
   BrowserRouter as Router,
   Switch,

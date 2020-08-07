@@ -86,3 +86,28 @@ body {
 .pointer {
     cursor: pointer;
 }
+
+.container1 {
+    background: #FFFFFF;
+    box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+}
+
+.main-color {
+    color: #490098;
+}
+
+.back-main-color {
+    background-color: #490098;
+}
+
+.white-color {
+    color: #ffffff;
+}
+
+.font-weight-bold {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 37px
+}

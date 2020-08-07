@@ -78,3 +78,17 @@ export const useDoc = (path) => {
 
     return data;
 }
+
+export const useUser = () => {
+    const {auth} = useFirebase();
+    const [state, setState] = useState({ user: null });
+    useEffect(() => {
+      if (auth) {
+        const subscribe = auth.onAuthStateChanged((user) => setState({ user }));
+  
+        return () => subscribe();
+      }
+    }, [auth])
+  
+    return state;
+  }

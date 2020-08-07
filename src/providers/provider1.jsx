@@ -1,6 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { useFirebase, useUser } from '../firebase';
-import { AuthContext } from './auth-user-provider';
+import { useFirebase, useUser } from '../hooks/firebase';
 
 export const ShortUrlContext = createContext({
     urls: [],
@@ -35,6 +34,7 @@ export const ShortUrlProvider = ({ children }) => {
 
     const addShortUrl = (url) => {
         let url1 = makeid(5);
+        setTinyurl(url1);
         if (user) {
             firestore.collection(`users/${user.uid}/shortUrls`).doc(url1)
                 .set({
@@ -42,7 +42,12 @@ export const ShortUrlProvider = ({ children }) => {
                     outputUrl: url1
                 })
         }
-        setTinyurl(url1);
+
+        firestore.collection(`shortUrls/${url1}`)
+            .set({
+                inputUrl: url,
+                outputUrl: url1
+            })
     }
 
     return (

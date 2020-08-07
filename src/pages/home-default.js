@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const homeDefault = () => {
+export const HomeDefault = () => {
     return(
         <div> a </div>
         // layout iishe orj irne

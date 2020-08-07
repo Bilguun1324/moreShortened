@@ -27,12 +27,12 @@
     }
 }
 
-@for $i from 1 through 10 {
+@for $i from 1 through 1000 {
     .h-#{$i} {
-        height: pow(2, $i) + px;
+        height: $i + px;
     }
     .w-#{$i} {
-        width: pow(2, $i) + px;
+        width: $i + px;
     }
     .pa-#{$i} {
         padding: pow(2, $i) + px;

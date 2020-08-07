@@ -1,6 +1,8 @@
 import React from 'react';
-import {HomeDefault} from './pages/home-default'
+import { HomeDefault } from './pages/home-default'
 import './styles/main.scss';
+import { ShortUrlProvider } from './providers/provider1';
+import {Shalgagch} from './Shalgagch';
 
 import {
   BrowserRouter as Router,
@@ -12,11 +14,16 @@ import {
 const App = () => {
   return (
     <Router>
-      <Switch>
-        <Route path="/" exact>
-          <HomeDefault />
-        </Route>
-      </Switch>
+      <ShortUrlProvider>
+        <Switch>
+          <Route path="/" exact>
+            <HomeDefault />
+          </Route>
+          <Route paht="*">
+            <Shalgagch />
+          </Route>
+        </Switch>
+      </ShortUrlProvider>
     </Router>
   )
 }

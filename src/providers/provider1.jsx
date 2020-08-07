@@ -4,7 +4,8 @@ import { useFirebase, useUser } from '../hooks/firebase';
 export const ShortUrlContext = createContext({
     urls: [],
     tinyurl: '',
-    addShortUrl: () => { }
+    addShortUrl: () => { },
+    readurl: () => { }
 })
 
 export const ShortUrlProvider = ({ children }) => {
@@ -32,6 +33,14 @@ export const ShortUrlProvider = ({ children }) => {
         return result;
     }
 
+    const readurl = (number) => {
+        if (firestore !== undefined)
+            firestore.collection('shortUrls').doc(number).get()
+                .then((res) => {
+                    window.location.href = res.data().inputUrl;
+                })
+    }
+
     const addShortUrl = (url) => {
         let url1 = makeid(5);
         setTinyurl(url1);
@@ -43,7 +52,7 @@ export const ShortUrlProvider = ({ children }) => {
                 })
         }
 
-        firestore.collection(`shortUrls/${url1}`)
+        firestore.collection('shortUrls').doc(`${url1}`)
             .set({
                 inputUrl: url,
                 outputUrl: url1
@@ -51,7 +60,7 @@ export const ShortUrlProvider = ({ children }) => {
     }
 
     return (
-        <ShortUrlContext.Provider value={{ urls, addShortUrl, tinyurl }} >
+        <ShortUrlContext.Provider value={{ urls, addShortUrl, readurl, tinyurl }} >
             {children}
         </ShortUrlContext.Provider>
     )

@@ -1,8 +1,10 @@
 import React from 'react';
+import {Shortener} from '../components/shortener';
 
 export const HomeDefault = () => {
     return(
-        <div> a </div>
-        // layout iishe orj irne
+        <div> 
+            <Shortener /> 
+        </div>
     )
 }

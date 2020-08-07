@@ -1,7 +1,7 @@
 import React from 'react';
-import { useInput, useKey } from '../hooks/firebase';
+import { useInput } from '../hooks/firebase';
 
-export const HomeDefault = () => {
+export const Shortener = () => {
 
     const [urlholder, bindurlholder] = useInput('');
 
@@ -10,7 +10,7 @@ export const HomeDefault = () => {
             <div>Shorten your URL</div>
             <div className='urlcont'>
                 <input {...bindurlholder} className='input' placeholder='Your URL Here'></input>
-                <button className='btn'>Shorten</button>
+                <button onClick='' className='btn'>Shorten</button>
             </div>
         </div>
     )
